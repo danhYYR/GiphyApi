@@ -1,0 +1,51 @@
+<?php
+	if($_POST){
+		$name=$_POST['name']
+		$comment=$_POST['comment']
+		$handle=fopen("comment.php","a")
+		fwrite($handle,"<br>".$name,":<br>".$comment);
+		fclose($handle)
+	}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<link rel="stylesheet" href="CSS\Header_navigator.css">
+<link rel="stylesheet" href="CSS\comment.css">
+<link rel="icon" href="Image/logo.png">
+
+<body>
+    <div class="topnav">
+        <a class="active" href=".\index.html">Home</a>
+        <a href=".\Trending.html">Trending</a>
+        <a href=".\About.html">About</a>
+    </div>
+    <div class="container">
+        <form action="/action_page.php">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name..">        
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        
+            <input type="submit" value="Submit">
+          </form>
+    </div>
+    <div><h3>Comment:</h3>
+        <?php
+        include("comment.php")
+        ?>
+    </div>
+    <script src="JS\comment.js"></script>
+
+</body>
+</html>
+
